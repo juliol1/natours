@@ -1,0 +1,22 @@
+{
+  "name": "natour",
+  "version": "1.0.0",
+  "description": "landing page for practice",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "keywords": [
+    "natour",
+    "responsive",
+    "css",
+    "sass",
+    "html"
+  ],
+  "author": "julio villalvazo",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.3.2",
+    "parcel": "^2.3.2"
+  }
+}

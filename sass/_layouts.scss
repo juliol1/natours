@@ -1,0 +1,414 @@
+.navigation {
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        background-color: #fff;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        z-index: 5000;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+        text-align: center;
+        cursor: pointer;
+
+        @include responsive(tab-port) {
+            top: 4rem;
+            right: 4rem;
+        }
+    }
+
+    &__background {
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        z-index: 40;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient(
+            var(--color-primary-light),
+            var(--color-primary-dark)
+        );
+
+        transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+
+        @include responsive(tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+    }
+
+    &__nav {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        z-index: 80;
+        top: 0;
+        right: 0;
+
+        opacity: 0;
+        width: 0;
+
+        transition: all 0.8s;
+    }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(
+                120deg,
+                transparent 0%,
+                transparent 50%,
+                #fff 50%
+            );
+            background-size: 230%;
+            transition: all 0.4s;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: var(--color-primary);
+            transform: translateX(1rem);
+        }
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(90);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after {
+            display: inline-block;
+            width: 3rem;
+            height: 2px;
+            background-color: var(--color-grey-dark-3);
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before {top: -.8rem; transform-origin: center;}
+        &::after {top: .8rem;}
+    }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+        
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+        
+    }
+
+}
+
+.header {
+    position: relative;
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, #80d671cb, #27b485cc),
+        url('../img/hero.jpg');
+    background-size: cover;
+    background-position: top;
+
+    clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0 100%);
+
+    @include responsive(phone) {
+        clip-path: polygon(0 0, 100% 0%, 100% 85vh, 0 100%);
+    }
+}
+
+.section-about {
+    background-color: var(--color-grey-light-1);
+    margin-top: -20vh;
+    padding: 25rem 0;
+
+    @include responsive(tab-port) {
+        margin-top: -15vh;
+        padding: 20rem 0;
+    }
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 0 10rem;
+
+    @include responsive(tab-port) {
+        display: flex;
+        flex-direction: column;
+        gap: 10rem;
+    }
+}
+
+.u-center-text {
+    text-align: center;
+}
+
+.u-margin-bottom-big {
+    margin-bottom: 8rem;
+
+    @include responsive(tab-port) {
+        margin-bottom: 6rem;
+    }
+}
+
+.u-margin-bottom-medium {
+    margin-bottom: 4.5rem;
+
+    @include responsive(tab-port) {
+        margin-bottom: 3.5rem;
+    }
+}
+
+.u-margin-bottom-small {
+    margin-bottom: 2rem;
+
+    @include responsive(tab-port) {
+        margin-bottom: 1rem;
+    }
+}
+
+.u-margin-top-big {
+    margin-top: 8rem;
+
+    @include responsive(tab-port) {
+        margin-top: 6rem;
+    }
+}
+
+.u-margin-top-small {
+    margin-top: 2rem;
+
+    @include responsive(tab-port) {
+        margin-top: 1rem;
+    }
+}
+
+.u-margin-top-medium {
+    margin-top: 4.5rem;
+
+    @include responsive(tab-port) {
+        margin-top: 3.5rem;
+    }
+}
+
+.features__card--grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 8%;
+
+    padding: 10rem 10rem;
+
+    @include responsive(tab-port) {
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+
+        padding: 0 10rem;
+    }
+}
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom, #80d671cb, #27b485cc),
+        url(../img/nat-4.jpg);
+    background-size: cover;
+
+    margin-top: -10rem;
+
+    transform: skewY(-7deg);
+
+    & > * {
+        transform: skewY(7deg);
+    }
+
+    @include responsive(tab-port) {
+        padding: 15rem 0;
+    }
+}
+
+.section-tours {
+    padding: 30rem 0 2rem 0;
+    margin-top: -10rem;
+    background-color: var(--color-grey-light-1);
+    min-height: 130rem;
+
+    @include responsive(tab-port) {
+        padding: 20rem 0 2rem 0;
+        min-height: auto;
+    }
+}
+
+.tours__card--container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 3rem 10rem;
+    column-gap: 10%;
+    margin-bottom: 10rem;
+
+    @include responsive(tab-port) {
+        overflow: scroll;
+    }
+
+    
+}
+
+.section-stories {
+    position: relative;
+    padding: 15rem 0;
+
+    @include responsive(tab-port) {
+        padding: 10rem 0;
+    } 
+}
+
+.story__container {
+    margin: 0 auto;
+
+    &:not(:last-child) {
+        margin-bottom: 10rem;
+    }
+}
+
+.book__grid {
+    display: grid;
+    grid-template: 1fr / 1fr;
+
+    // @include responsive(tab-port) {
+    //     display: flex;
+    //     flex-direction: column;
+    // }
+}
+
+.section-book {
+    padding: 15rem 15rem;
+    background-image: linear-gradient(
+        to right bottom,
+        var(--color-primary-light),
+        var(--color-primary-dark)
+    );
+
+    @include responsive(tab-port) {
+        padding: 5rem 5rem;
+    }
+}
+
+.book {
+    background-image: linear-gradient(
+            105deg,
+            rgba(#fff, 0.9) 0%,
+            rgba(#fff, 0.9) 50%,
+            transparent 50%
+        ),
+        url(../img/nat-10.jpg);
+    background-size: cover;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+
+    min-height: 50rem;
+
+    @include responsive(tab-land) {
+        background-image: linear-gradient(
+            105deg,
+            rgba(#fff, 0.9) 0%,
+            rgba(#fff, 0.9) 65%,
+            transparent 65%
+        ),
+        url(../img/nat-10.jpg);
+    }
+
+    @include responsive(tab-port) {
+        background-image: linear-gradient(
+            105deg,
+            rgba(#fff, 0.9) 0%,
+            rgba(#fff, 0.9) 100%,
+            transparent 100%
+        ),
+        url(../img/nat-10.jpg);
+    }
+
+    &__form {
+        width: 50%;
+        padding: 6rem;
+
+        @include responsive(tab-land) {
+            width: 65%;
+        }
+
+        @include responsive(tab-port) {
+            width: 100%;
+        }
+    }
+}
+
+.footer__grid--container {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    padding: 0 18rem;
+    column-gap: 10%;
+    // display: flex;
+    align-items: initial;
+
+    @include responsive(tab-port) {
+        padding: 0 4rem;
+        text-align: center;
+    }
+}
